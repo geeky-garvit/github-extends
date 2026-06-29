@@ -1,0 +1,29 @@
+
+Hi @Garvit Chawla
+This is your JS project. Timeline is wednesday morning. In case of any doubt feel free to reach out
+JS - Project  — GitHub User Explorer
+API: https://api.github.com/users/{username} — free, no key needed. Add a GitHub personal token via header for 5000 req/hr instead of 60.
+Core
+
+Search bar that fetches a GitHub user’s profile on input
+Profile card showing avatar, name, bio, follower/following count, public repos
+Repo list with name, description, star count, language badge, and a link
+Filtering & Sorting
+
+Filter repos by language (dropdown populated from fetched data)
+Sort repos by stars, forks, or most recently updated
+UX & Edge Cases
+
+Debounced search — fires only after user stops typing
+Loading state while fetching
+Distinct error states for user not found, rate limit hit, and network failure
+Empty state when no repos match the current filter
+Performance
+
+Cache previously searched users — don’t re-fetch if already loaded
+Fetch profile + repos + followers in parallel, not one after another
+Stretch Goals
+
+Compare two users side by side
+Paginated repo list (10 per page, load more button)
+Follower list with mini profile cards that are themselves clickable
