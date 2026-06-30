@@ -7,6 +7,7 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
+    
     <nav id="nav">
         <h1>git-extends</h1>
         <div id="find">
@@ -17,13 +18,27 @@
             <button id="button" type="button">search</button>
         </div>
         <div id="menue">
-            <h3><a href="#">compare</a></h3>
+            
         </div>
     </nav>
+    <div id="compare-form">
+        <div id="note"></div>
+        <div id="data">
+            <div id="first"></div>
+            <div id="second"></div>
+        </div>
+    </div>
     <div id="content">
         <div id="user"></div>
     </div>
-    <div id="dot"></div>
+    <div id="floating">
+    <div id="dot">🔍</div>
+
+    <div id="panel">
+        <input type="text" placeholder="Search user" id="compare">
+        <button id="compare-btn">Compare</button>
+    </div>
+</div>
     <script type="module" src="./js/controller.js"></script>
 </body>
 </html>

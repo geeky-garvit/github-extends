@@ -12,7 +12,7 @@ nav{
     padding-right: 2vw;
 }
 .content{
-    height:90vh;
+   
     width:98vw;
     display:flex;
     flex-direction:row;
@@ -23,6 +23,9 @@ nav{
     flex-direction:row;
     justify-content:space-evenly;
     align-items:center;
+}
+.user:hover{
+    background-color: #ccc;
 }
 .menu{
     display: flex;
@@ -49,12 +52,48 @@ nav{
     width: 57vw;
     height: 5vh;
 }
-.dot{
-    height:100px;
-    width: 100px;
+#dot{
+    position: fixed;
+
+    width: 60px;
+    height: 60px;
+
+    bottom: 30px;
+    right: 30px;
+
     border-radius: 50px;
-    background-color: rgb(80, 79, 79);
+    
+    background: linear-gradient(135deg, #24292e, #586069);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+
+    cursor: grab;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+
+     transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+
+    user-select: none;
+    z-index: 1000;
+    
+    
 }
+#dot:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+#dot:active {
+    cursor: grabbing;
+    transform: scale(0.95);
+}
+
 #bar{
     display: flex;
     flex-direction: column;
@@ -86,4 +125,87 @@ nav{
 
 .suggestion:hover{
     background:#f2f2f2;
+}
+#floating{
+    width:60px;
+    height:60px;
+}
+#floating.open{
+    width:320px;
+    border-radius:20px;
+}
+#panel{
+    opacity:0;
+    visibility:hidden;
+    position: fixed;
+}
+#floating.open #panel{
+    opacity:1;
+    visibility:visible;
+    position: fixed;
+    z-index: 100;
+}
+#floating {
+    margin-top: 80vh;
+    margin-left: 79vw;
+    width: 60px;
+    height: 10px;
+    transition: all 0.3s ease;
+    padding: 10px;
+    position: fixed;
+    position: fixed;
+}
+
+#floating.open {
+    width: 300px;
+    position: fixed;
+}
+#floating.open {
+    position: fixed;
+    background: linear-gradient(135deg, #24292e, #586069);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    width: 300px;
+    height: 30px;
+    
+}
+#compare-form{
+    position:fixed;
+    z-index: 200000;
+    height:80vh;
+    width:95vw;
+    justify-self: center;
+    border-radius: 10px;
+    border-style: groove;
+    opacity: 0.5;
+    display: none;
+    transform: scale(0.5);
+    transition: 3s all ease-in-out;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
+    justify-content: space-evenly;
+
+
+}
+#data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+#first{
+    height: 70vh;
+    width:47vw;
+    border-radius: 10px;
+    border-style: solid;
+}
+#second{
+    height: 70vh;
+    width:47vw;
+    border-radius: 10px;
+    border-style: solid;
+    
+}
+#note{
+    height: 5vh;
+    width: 95vw;
+    border: solid;
 }
