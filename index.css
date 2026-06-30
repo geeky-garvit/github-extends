@@ -1,13 +1,15 @@
 nav{
-    border-style: groove;
-    border-radius:20px;
-    width:98vw;
+    border-style:ridge;
+    border-radius:50px;
+    width:95vw;
     height:6vh;
+    display: flex;
+    flex-direction: row;
     justify-content:space-between;
-    justify-items:center;
-    align-items:center;
-    padding:0.5vh;
-    
+    padding: 0.5vh;
+    padding-left: 2vw;
+    justify-self:center;
+    padding-right: 2vw;
 }
 .content{
     height:90vh;
@@ -16,9 +18,72 @@ nav{
     flex-direction:row;
     justify-content:space-between;
 }
-.user{
+#user{
     display:flex;
     flex-direction:row;
-    justify-content:space-between;
+    justify-content:space-evenly;
     align-items:center;
+}
+.menu{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-around;
+}
+.search{
+    width: 40vw;
+    border-radius: 50px;
+    height: 5vh;
+    border-style: dotted;
+    
+}
+#button{
+    border-radius: 50px;
+    background-color: orange;
+    width: 5vw;
+    height: 5vh;
+}
+#find{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 57vw;
+    height: 5vh;
+}
+.dot{
+    height:100px;
+    width: 100px;
+    border-radius: 50px;
+    background-color: rgb(80, 79, 79);
+}
+#bar{
+    display: flex;
+    flex-direction: column;
+}
+#find{
+    position: relative;
+    width: 300px;
+}
+
+#suggestions{
+    position:absolute;
+    top:100%;
+    left:0;
+    right:0;
+
+    background:white;
+    border:1px solid #ccc;
+
+    max-height:250px;
+    overflow-y:auto;
+
+    display:none;
+}
+
+.suggestion{
+    padding:10px;
+    cursor:pointer;
+}
+
+.suggestion:hover{
+    background:#f2f2f2;
 }

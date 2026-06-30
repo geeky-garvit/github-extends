@@ -3,23 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>GitHub User Search</title>
+    <link href="index.css" rel="stylesheet">
 </head>
-<link href="index.css" rel="stylesheet">
 <body>
     <nav id="nav">
-        git extendss
-        <input type="text" id="search" placeholder="Search users">
-        <button id="button">serch</button>
+        <h1>git-extends</h1>
+        <div id="find">
+            <div id="bar">
+            <input type="text" id="search" class="search" placeholder="Search users">
+            <div id="suggestions"></div>
+            </div>
+            <button id="button" type="button">search</button>
+        </div>
         <div id="menue">
-            compare ussers
+            <h3><a href="#">compare</a></h3>
         </div>
     </nav>
     <div id="content">
-        <div id="user">
-            
-        </div>
+        <div id="user"></div>
     </div>
-    <script src="script.js"></script>
+    <div id="dot"></div>
+    <script type="module" src="./js/controller.js"></script>
 </body>
 </html>
