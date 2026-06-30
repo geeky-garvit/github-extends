@@ -4,14 +4,15 @@ import {
     loading,
     error,
     rendernd,
-    loadingnd
+    loadingnd,
+    renderst
 } from "./view.js";
 
 const input = document.getElementById("search");
-
+ let username;
 // Main Search
 input.addEventListener("input", async (event) => {
-    const username = event.target.value.trim();
+     const username = event.target.value.trim();
     if (!username) {
         document.getElementById("user").innerHTML = "";
         return;
@@ -21,6 +22,7 @@ input.addEventListener("input", async (event) => {
         const data = await getuser(username);
         console.log(data);
         render(data);
+        renderst(data);
     } catch (err) {
         error(err.message);
     }

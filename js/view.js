@@ -1,7 +1,7 @@
 export function render(user) {
 
     document.getElementById("user").innerHTML = `
-        <img src="${user.avatar_url}" alt="${user.login}">
+        <img width="100px" height="100px" src="${user.avatar_url}" alt="${user.login}">
         <h2>${user.name ?? user.login}</h2>
         <p><strong>Bio:</strong> ${user.bio ?? "No bio available"}</p>
         <p><strong>Followers:</strong> ${user.followers}</p>
@@ -24,14 +24,14 @@ export function empty() {
 
 export function note() {
     document.getElementById("note").innerHTML = `
-        Comparing is not good thing ankurr
+        "Comparing is not good thing ankurr"
     `;
 }
 
 export function renderst(user) {
 
     document.getElementById("first").innerHTML = `
-        <img src="${user.avatar_url}" alt="${user.login}">
+        <img width="100px" height="100px" src="${user.avatar_url}" alt="${user.login}">
         <h2>${user.name ?? user.login}</h2>
         <p><strong>Bio:</strong> ${user.bio ?? "No bio available"}</p>
         <p><strong>Followers:</strong> ${user.followers}</p>
@@ -43,7 +43,7 @@ export function renderst(user) {
 export function rendernd(user) {
 
     document.getElementById("second").innerHTML = `
-        <img src="${user.avatar_url}" alt="${user.login}">
+        <img width="100px" height="100px" src="${user.avatar_url}" alt="${user.login}">
         <h2>${user.name ?? user.login}</h2>
         <p><strong>Bio:</strong> ${user.bio ?? "No bio available"}</p>
         <p><strong>Followers:</strong> ${user.followers}</p>
