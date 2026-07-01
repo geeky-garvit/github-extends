@@ -9,9 +9,11 @@ import {
     error
 } from "../views/userView.js";
 
+
 const input = document.getElementById("search");
 
 let username = "";
+let repos = [];
 
 input.addEventListener("input", async (event) => {
 
@@ -28,19 +30,21 @@ input.addEventListener("input", async (event) => {
 
         loading();
 
-        const [user, repos, followerData] = await Promise.all([
+        const [user, repoData, followerData] = await Promise.all([
             getuser(username),
             getRepos(username),
             followers(username)
         ]);
 
-        render(user);
+        repos = repoData;
 
-        renderst(user);
+render(user);
 
-        renderRepos(repos);
+renderst(user);
 
-        renderFollowers(followerData);
+renderRepos(repos);
+
+renderFollowers(followerData);
 
     } catch (err) {
 
@@ -66,24 +70,62 @@ followerContainer.addEventListener("click", async (event) => {
 
         loading();
 
-        const [user, repos, followerData] = await Promise.all([
+        const [user, repoData, followerData] = await Promise.all([
             getuser(username),
             getRepos(username),
             followers(username)
         ]);
 
-        render(user);
+        repos = repoData;
 
-        renderst(user);
+render(user);
 
-        renderRepos(repos);
+renderst(user);
 
-        renderFollowers(followerData);
+renderRepos(repos);
 
+renderFollowers(followerData);
     } catch (err) {
 
         error(err.message);
 
     }
+
+});
+const sort = document.getElementById("sort");
+
+sort.addEventListener("change", () => {
+
+    const sortedRepos = [...repos];
+
+    switch (sort.value) {
+
+        case "stars":
+
+            sortedRepos.sort((a, b) =>
+                b.stargazers_count - a.stargazers_count
+            );
+
+            break;
+
+        case "forks":
+
+            sortedRepos.sort((a, b) =>
+                b.forks_count - a.forks_count
+            );
+
+            break;
+
+        case "updated":
+
+            sortedRepos.sort((a, b) =>
+                new Date(b.updated_at) - new Date(a.updated_at)
+            );
+
+            break;
+
+    }
+
+    renderRepos(sortedRepos);
 
 });
