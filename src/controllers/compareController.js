@@ -11,7 +11,7 @@ import { error } from "../views/userView.js";
 const compareForm = document.getElementById("compare-form");
 const compareInput = document.getElementById("compare");
 const compareBtn = document.getElementById("compare-btn");
-
+const app = document.getElementById("web");
 compareBtn.addEventListener("click", (e) => {
 
     e.preventDefault();
@@ -19,7 +19,7 @@ compareBtn.addEventListener("click", (e) => {
     compareForm.style.display = "flex";
     compareForm.style.opacity = "1";
     compareForm.style.transform = "scale(1)";
-
+    app.classList.add("blur");
     note();
 
 });

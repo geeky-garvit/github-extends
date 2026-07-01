@@ -15,7 +15,7 @@ export function loadingnd() {
 }
 
 export function note() {
-    document.getElementById("note").innerHTML = `
-        "Comparing is not good thing ankurr"
-    `;
+    document.getElementById("note").innerHTML = 
+        "<center><h2>Comparing is not good thing ankurr</h2></center>"
+    ;
 }
