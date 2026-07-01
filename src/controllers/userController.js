@@ -1,22 +1,26 @@
-import { getuser } from "../models/userModel.js";
+import { getuser, getRepos, followers } from "../models/userModel.js";
 
 import {
     render,
+    renderRepos,
+    renderFollowers,
+    renderst,
     loading,
-    error,
-    renderst
+    error
 } from "../views/userView.js";
 
 const input = document.getElementById("search");
 
-let username;
+let username = "";
 
 input.addEventListener("input", async (event) => {
 
-    const username = event.target.value.trim();
+    username = event.target.value.trim();
 
     if (!username) {
         document.getElementById("user").innerHTML = "";
+        document.getElementById("repos").innerHTML = "";
+        document.getElementById("followers").innerHTML = "";
         return;
     }
 
@@ -24,13 +28,57 @@ input.addEventListener("input", async (event) => {
 
         loading();
 
-        const data = await getuser(username);
+        const [user, repos, followerData] = await Promise.all([
+            getuser(username),
+            getRepos(username),
+            followers(username)
+        ]);
 
-        console.log(data);
+        render(user);
 
-        render(data);
+        renderst(user);
 
-        renderst(data);
+        renderRepos(repos);
+
+        renderFollowers(followerData);
+
+    } catch (err) {
+
+        error(err.message);
+
+    }
+
+});
+
+const followerContainer = document.getElementById("followers");
+
+followerContainer.addEventListener("click", async (event) => {
+
+    const card = event.target.closest(".follower-card");
+
+    if (!card) return;
+
+    username = card.dataset.username;
+
+    input.value = username;
+
+    try {
+
+        loading();
+
+        const [user, repos, followerData] = await Promise.all([
+            getuser(username),
+            getRepos(username),
+            followers(username)
+        ]);
+
+        render(user);
+
+        renderst(user);
+
+        renderRepos(repos);
+
+        renderFollowers(followerData);
 
     } catch (err) {
 

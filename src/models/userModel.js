@@ -41,3 +41,19 @@ export async function following(username) {
 
     return await followingre.json();
 }
+export async function getRepos(username) {
+
+    const reposre = await fetch(
+        `https://api.github.com/users/${username}/repos`
+    );
+
+    if (reposre.status === 404) {
+        throw new Error("Repositories Not Found");
+    }
+
+    if (reposre.status === 403) {
+        throw new Error("Limit Exceeded");
+    }
+
+    return await reposre.json();
+}
