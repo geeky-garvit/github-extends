@@ -8,6 +8,10 @@
 </head>
 <body>
     <div id="compare-form">
+        <div class="compare-header">
+            <button id="compare-close" class="btn-back" type="button">Back</button>
+            <h2>Compare Users</h2>
+        </div>
         <div id="note"></div>
         <div id="data">
             <div id="first" class="compare-card"></div>
@@ -15,48 +19,69 @@
         </div>
     </div>
     <div id="web">
+        <center><h1 class="git"> GEEKY-GIT</h1></center>
     <nav id="nav">
-        <h1>git-extends</h1>
+        <div id="brand">
+            <div class="logo-mark">&</div>
+            
+        </div>
         <div id="find">
             <div id="bar">
-            <input type="text" id="search" class="search" placeholder="Search users">
-            <div id="suggestions"></div>
+                <input type="text" id="search" class="search" placeholder="Search GitHub users">
+                <div id="suggestions"></div>
             </div>
-            <button id="button" type="button">search</button>
+            <button id="button" type="button">Search</button>
         </div>
         <div id="menue">
-            
+            <div id="navbar-dot">🔍</div>
         </div>
     </nav>
     
     <div id="content">
         <div id="user"></div>
-        <div id="info"> 
-        
-
-<div class="headline">
-    <div class="headline-in">
-    <h2>Repositories</h2>
-    <select id="sort">
-    <option value="default">Default</option>
-    <option value="stars">Stars</option>
-    <option value="forks">Forks</option>
-    <option value="updated">Recently Updated</option>
-</select>
-</div>
-<div id="repos" class="sli">
-
-</div>
-</div>
-
-<div class="headline"> 
-    <div class="headline-in">
-    <h2>Followers</h2>
-    <input type="text" id="fsearch" placeholder="Search followers">
-    </div>
-<div id="followers" class="sli"></div>
-</div>
-</div>
+        <div id="details">
+            <div id="profile-panel" class="detail-panel active">
+                <div class="profile-summary-card">
+                    <h2>Profile Overview</h2>
+                    <p>Use the tabs in the card above to switch between profile details, repos, followers, and following.</p>
+                </div>
+            </div>
+            <div id="repos-panel" class="detail-panel">
+                <div class="headline">
+                    <div class="headline-in">
+                        <h2>Repositories</h2>
+                        <select id="sort">
+                            <option value="default">Default</option>
+                            <option value="stars">Stars</option>
+                            <option value="forks">Forks</option>
+                            <option value="updated">Recently Updated</option>
+                        </select>
+                    </div>
+                    <div id="repos" class="sli"></div>
+                    <button id="load-more-repos" class="load-more-btn">Load more repos</button>
+                </div>
+            </div>
+            <div id="followers-panel" class="detail-panel">
+                <div class="headline">
+                    <div class="headline-in">
+                        <h2>Followers</h2>
+                        <input type="text" id="fsearch" placeholder="Search followers">
+                    </div>
+                    <div id="followers" class="sli"></div>
+                    <button id="load-more-followers" class="load-more-btn">Load more followers</button>
+                </div>
+            </div>
+            <div id="following-panel" class="detail-panel">
+                <div class="headline">
+                    <div class="headline-in">
+                        <h2>Following</h2>
+                        <input type="text" id="following-search" placeholder="Search following">
+                    </div>
+                    <div id="following" class="sli"></div>
+                    <button id="load-more-following" class="load-more-btn">Load more following</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div id="floating">
     <div id="dot">🔍</div>

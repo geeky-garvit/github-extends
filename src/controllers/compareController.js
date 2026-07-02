@@ -1,55 +1,81 @@
 import { getuser } from "../models/userModel.js";
 
 import {
+    renderFirst,
     rendernd,
     loadingnd,
-    note
+    note,
+    errornd
 } from "../views/compareView.js";
-
-import { error } from "../views/userView.js";
 
 const compareForm = document.getElementById("compare-form");
 const compareInput = document.getElementById("compare");
 const compareBtn = document.getElementById("compare-btn");
+const compareClose = document.getElementById("compare-close");
 const app = document.getElementById("web");
-compareBtn.addEventListener("click", (e) => {
 
-    e.preventDefault();
+const debounce = (fn, delay = 400) => {
+    let timer;
+    const debounced = (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+    };
+    debounced.cancel = () => clearTimeout(timer);
+    return debounced;
+};
 
+const openCompareForm = () => {
     compareForm.style.display = "flex";
     compareForm.style.opacity = "1";
     compareForm.style.transform = "scale(1)";
     app.classList.add("blur");
-    note();
 
+    if (window.currentSearchUser) {
+        renderFirst(window.currentSearchUser);
+    } else {
+        const slot = document.getElementById("first");
+        if (slot) {
+            slot.textContent = "Search a user first to compare.";
+        }
+    }
+
+    note();
+};
+
+const closeCompareForm = () => {
+    compareForm.style.display = "none";
+    compareForm.style.opacity = "";
+    compareForm.style.transform = "";
+    app.classList.remove("blur");
+};
+
+compareBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    openCompareForm();
 });
 
-compareInput.addEventListener("input", async (event) => {
+compareClose.addEventListener("click", (e) => {
+    e.preventDefault();
+    closeCompareForm();
+});
 
-    const username = event.target.value.trim();
-
+const compareDebouncedSearch = debounce(async (username) => {
     if (!username) {
-
-        document.getElementById("second").innerHTML = "";
-
+        const container = document.getElementById("second");
+        if (container) container.textContent = "";
         return;
-
     }
 
     try {
-
         loadingnd();
-
         const data = await getuser(username);
-
-        console.log(data);
-
         rendernd(data);
-
     } catch (err) {
-
-        error(err.message);
-
+        errornd(err.message);
     }
+});
 
+compareInput.addEventListener("input", (event) => {
+    const username = event.target.value.trim();
+    compareDebouncedSearch(username);
 });
