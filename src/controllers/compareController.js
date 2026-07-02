@@ -7,6 +7,7 @@ import {
     note,
     errornd
 } from "../views/compareView.js";
+import { animateCompareReset } from "./compareAnimation.js";
 
 const compareForm = document.getElementById("compare-form");
 const compareInput = document.getElementById("compare");
@@ -62,7 +63,10 @@ compareClose.addEventListener("click", (e) => {
 const compareDebouncedSearch = debounce(async (username) => {
     if (!username) {
         const container = document.getElementById("second");
-        if (container) container.textContent = "";
+        if (container) {
+            container.textContent = "";
+        }
+        animateCompareReset();
         return;
     }
 

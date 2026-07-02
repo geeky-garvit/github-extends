@@ -55,6 +55,21 @@ const openSearchLayout = () => {
     switchPanel("profile");
 };
 
+const resetSearchLayout = () => {
+    document.body.classList.remove("search-open");
+    empty();
+
+    const profilePanel = document.getElementById("profile-panel");
+    if (profilePanel) {
+        profilePanel.innerHTML = `
+            <div class="profile-summary-card">
+                <h2>Profile Overview</h2>
+                <p>Use the tabs in the card above to switch between profile details, repos, followers, and following.</p>
+            </div>
+        `;
+    }
+};
+
 const renderAllLists = () => {
     renderRepos(repos, visibleRepos);
     renderFollowers(followersData, visibleFollowers);
@@ -100,6 +115,11 @@ input.addEventListener("keydown", async (event) => {
 });
 
 const debouncedSearch = debounce(async () => {
+    if (!input.value.trim()) {
+        resetSearchLayout();
+        return;
+    }
+
     await performSearch();
 });
 
@@ -109,6 +129,10 @@ input.addEventListener("input", () => {
 
 searchButton.addEventListener("click", async () => {
     debouncedSearch.cancel();
+    if (!input.value.trim()) {
+        resetSearchLayout();
+        return;
+    }
     await performSearch();
 });
 
