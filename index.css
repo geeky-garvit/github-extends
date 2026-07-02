@@ -423,7 +423,7 @@ body.search-open #content{
 
 .profile-actions{
 
-    display:flex;
+    display:nonegi;
 
     flex-wrap:wrap;
 
